@@ -1,0 +1,89 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import Services from '../components/Services.astro';
+import Contact from '../components/Contact.astro';
+import Footer from '../components/Footer.astro';
+import { Star } from 'lucide-react';
+---
+
+<Layout title="Lawnx | Professional Landscaping & Lawn Care">
+  
+  <Header />
+  
+  <main>
+    <Hero />
+    
+    <!-- Trust Bar -->
+    <div class="bg-surface-white border-b border-gray-100 py-10">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-sm font-bold text-gray-400 uppercase tracking-widest mb-6">Trusted by businesses in your area</p>
+            <div class="flex flex-wrap justify-center gap-12 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
+               <!-- Placeholders for logos -->
+               <span class="text-xl font-black text-secondary-light">HOMEGARDEN</span>
+               <span class="text-xl font-black text-secondary-light">GREENLIFE</span>
+               <span class="text-xl font-black text-secondary-light">ECOYARD</span>
+               <span class="text-xl font-black text-secondary-light">NATURALS</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Snippet -->
+    <section id="about" class="py-20 bg-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div class="order-2 md:order-1 relative">
+                <div class="aspect-square bg-gray-100 rounded-2xl overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1610620612440-8b646c764be4?auto=format&fit=crop&q=80&w=800" alt="Garden care detail" class="w-full h-full object-cover" />
+                </div>
+                <div class="absolute -bottom-6 -right-6 w-48 h-48 bg-primary rounded-xl p-6 hidden lg:flex flex-col justify-center items-center text-white shadow-xl">
+                    <span class="text-5xl font-bold">200+</span>
+                    <span class="text-sm">Happy Clients</span>
+                </div>
+            </div>
+            <div class="order-1 md:order-2">
+                <h2 class="text-primary font-bold uppercase text-sm mb-2">Who We Are</h2>
+                <h3 class="text-3xl md:text-4xl font-extrabold text-secondary-dark mb-6">We Don't Just Cut Grass, We Manicure Nature</h3>
+                <p class="text-secondary-light text-lg mb-6">
+                    Lawnx has been serving the local community for over 15 years. Our team of certified horticulturists and landscape designers are passionate about creating sustainable, beautiful outdoor environments.
+                </p>
+                <ul class="space-y-3 mb-8">
+                    {['Certified Experts', 'Eco-Friendly Equipment', 'Unbeatable Guarantee'].map((item) => (
+                        <li class="flex items-center text-secondary-dark font-medium">
+                            <Star class="text-primary mr-3" size={20} fill="currentColor" />
+                            {item}
+                        </li>
+                    ))}
+                </ul>
+                <a href="#about" class="text-primary font-bold underline hover:text-primary-dark">Read Our Story</a>
+            </div>
+        </div>
+    </section>
+
+    <Services />
+
+    <!-- Simple Stats & Testimonials placeholders required by design analysis -->
+    <section class="bg-secondary-dark relative py-20 text-white overflow-hidden">
+         <div class="absolute inset-0 bg-primary opacity-10"></div>
+         <div class="container mx-auto px-4 relative z-10 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+             <div>
+                 <span class="block text-5xl font-extrabold mb-2">15+</span>
+                 <span class="text-gray-300">Years Experience</span>
+             </div>
+             <div>
+                 <span class="block text-5xl font-extrabold mb-2">2500+</span>
+                 <span class="text-gray-300">Projects Done</span>
+             </div>
+             <div>
+                 <span class="block text-5xl font-extrabold mb-2">100%</span>
+                 <span class="text-gray-300">Satisfaction Rate</span>
+             </div>
+         </div>
+    </section>
+
+    <Contact />
+  </main>
+  
+  <Footer />
+
+</Layout>

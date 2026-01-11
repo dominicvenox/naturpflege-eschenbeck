@@ -1,0 +1,87 @@
+---
+import { Menu, Phone, X } from 'lucide-react';
+
+const navItems = [
+  { name: 'Home', href: '#' },
+  { name: 'About', href: '#about' },
+  { name: 'Services', href: '#services' },
+  { name: 'Projects', href: '#projects' },
+  { name: 'Contact', href: '#contact' },
+];
+---
+
+<header class="bg-surface-white shadow-sm sticky top-0 z-50">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-20">
+      <!-- Logo -->
+      <div class="flex-shrink-0 flex items-center cursor-pointer">
+        <span class="text-2xl font-bold text-primary-dark">Lawn<span class="text-primary-light">x</span></span>
+      </div>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden md:flex space-x-8">
+        {navItems.map((item) => (
+          <a
+            href={item.href}
+            class="text-secondary-light hover:text-primary font-medium transition-colors"
+          >
+            {item.name}
+          </a>
+        ))}
+      </nav>
+
+      <!-- Desktop CTA -->
+      <div class="hidden md:flex items-center">
+        <a
+          href="tel:+1234567890"
+          class="flex items-center gap-2 bg-primary hover:bg-primary-dark text-white px-5 py-2.5 rounded-full font-semibold transition-colors shadow-lg hover:shadow-xl"
+        >
+          <Phone size={18} />
+          <span>Call Now</span>
+        </a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <div class="md:hidden flex items-center">
+        <button
+          id="mobile-menu-btn"
+          class="text-secondary hover:text-primary p-2 focus:outline-none"
+          aria-label="Toggle menu"
+        >
+          <Menu size={28} />
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Menu (Hidden by default) -->
+  <div id="mobile-menu" class="hidden md:hidden absolute top-20 left-0 w-full bg-surface-white border-t border-gray-100 shadow-lg">
+    <div class="px-4 pt-2 pb-6 space-y-2">
+      {navItems.map((item) => (
+        <a
+          href={item.href}
+          class="block px-3 py-3 rounded-md text-base font-medium text-secondary hover:text-primary hover:bg-surface-muted transition-colors"
+        >
+          {item.name}
+        </a>
+      ))}
+      <a
+        href="tel:+1234567890"
+        class="block w-full text-center mt-4 bg-primary text-white px-3 py-3 rounded-md font-bold"
+      >
+        Call Now
+      </a>
+    </div>
+  </div>
+</header>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+
+  if (btn && menu) {
+    btn.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
+    });
+  }
+</script>

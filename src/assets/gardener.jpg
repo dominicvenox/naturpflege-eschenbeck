@@ -1,0 +1,3 @@
+// This is a placeholder file since I cannot generate binary images directly.
+// In a real scenario, this would be a real image file.
+module.exports = "PLACEHOLDER_IMAGE";
