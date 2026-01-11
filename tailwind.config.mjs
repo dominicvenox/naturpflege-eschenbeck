@@ -5,36 +5,37 @@ export default {
 		extend: {
 			colors: {
 				primary: {
-					DEFAULT: '#2F855A', // Green-600 typically
-					light: '#48BB78', // Green-500
-					dark: '#22543D',  // Green-800
+					DEFAULT: '#064E3B', // Deep Emerald (was #2F855A)
+					light: '#059669',   // Rich Green
+					dark: '#022C22',    // Almost Black Green
 				},
 				secondary: {
-					DEFAULT: '#2D3748', // Gray-800
-					light: '#4A5568', // Gray-700
+					DEFAULT: '#111827', // Gray-900
+					light: '#374151',   // Gray-700
 				},
 				accent: {
-					DEFAULT: '#F6E05E', // Yellow-400 for highlights/badges
-					hover: '#D69E2E',
+					DEFAULT: '#D4AF37', // Metallic Gold
+					hover: '#B8860B',   // Dark Goldenrod
+					light: '#FDE68A',   // Pale Gold
 				},
 				surface: {
-					light: '#F7FAFC', // Gray-50
-					muted: '#EDF2F7', // Gray-100
+					light: '#F9FAFB', // Cool Gray 50
+					muted: '#F3F4F6', // Cool Gray 100
 					white: '#FFFFFF',
+					dark: '#0F172A',  // Slate 900 for dark sections
 				}
 			},
 			fontFamily: {
-				sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+				sans: ['Outfit', 'Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+				display: ['Playfair Display', 'serif'], // Optional for headings if we wanted, but sticking to sans for now primarily
 			},
-			container: {
-				center: true,
-				padding: '1rem',
-				screens: {
-					sm: '600px',
-					md: '728px',
-					lg: '984px',
-					xl: '1240px',
-				},
+			center: true,
+			padding: '1rem',
+			screens: {
+				sm: '600px',
+				md: '728px',
+				lg: '984px',
+				xl: '1240px',
 			},
 		},
 	},

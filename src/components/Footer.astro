@@ -2,40 +2,40 @@
 import { Facebook, Instagram, Twitter, Linkedin, Send } from 'lucide-react';
 ---
 
-<footer class="bg-secondary text-white pt-20 pb-10">
+<footer class="bg-secondary text-white pt-24 pb-12 border-t border-secondary-light/30">
   <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
       
       <!-- Brand & About -->
       <div class="space-y-6">
-        <span class="text-2xl font-bold text-white">Lawn<span class="text-primary-light">x</span></span>
-        <p class="text-gray-400 text-sm leading-relaxed">
+        <span class="text-3xl font-bold text-white tracking-tight">Lawn<span class="text-primary-light">x</span></span>
+        <p class="text-gray-400 text-sm leading-relaxed max-w-xs">
           Bringing premium landscaping services to your neighborhood. We care about your outdoors as much as you do.
         </p>
-        <div class="flex space-x-4">
-          <a href="#" class="text-gray-400 hover:text-primary-light transition-colors"><Facebook size={20} /></a>
-          <a href="#" class="text-gray-400 hover:text-primary-light transition-colors"><Instagram size={20} /></a>
-          <a href="#" class="text-gray-400 hover:text-primary-light transition-colors"><Twitter size={20} /></a>
-          <a href="#" class="text-gray-400 hover:text-primary-light transition-colors"><Linkedin size={20} /></a>
+        <div class="flex space-x-4 pt-2">
+          <a href="#" class="w-10 h-10 rounded-full bg-secondary-light/50 flex items-center justify-center text-gray-400 hover:bg-primary hover:text-white transition-all duration-300"><Facebook size={18} /></a>
+          <a href="#" class="w-10 h-10 rounded-full bg-secondary-light/50 flex items-center justify-center text-gray-400 hover:bg-primary hover:text-white transition-all duration-300"><Instagram size={18} /></a>
+          <a href="#" class="w-10 h-10 rounded-full bg-secondary-light/50 flex items-center justify-center text-gray-400 hover:bg-primary hover:text-white transition-all duration-300"><Twitter size={18} /></a>
+          <a href="#" class="w-10 h-10 rounded-full bg-secondary-light/50 flex items-center justify-center text-gray-400 hover:bg-primary hover:text-white transition-all duration-300"><Linkedin size={18} /></a>
         </div>
       </div>
 
       <!-- Quick Links -->
       <div>
-        <h4 class="text-lg font-semibold mb-6">Quick Links</h4>
-        <ul class="space-y-3 text-gray-400 text-sm">
-          <li><a href="#" class="hover:text-primary-light transition-colors">About Us</a></li>
-          <li><a href="#" class="hover:text-primary-light transition-colors">Services</a></li>
-          <li><a href="#" class="hover:text-primary-light transition-colors">Our Projects</a></li>
-          <li><a href="#" class="hover:text-primary-light transition-colors">Testimonials</a></li>
-          <li><a href="#" class="hover:text-primary-light transition-colors">Contact</a></li>
+        <h4 class="text-lg font-bold mb-6 text-white">Quick Links</h4>
+        <ul class="space-y-3 text-gray-400 text-sm font-medium">
+          <li><a href="#" class="hover:text-accent transition-colors flex items-center"><span class="w-1.5 h-1.5 rounded-full bg-primary mr-2 opacity-0 hover:opacity-100 transition-opacity"></span>About Us</a></li>
+          <li><a href="#" class="hover:text-accent transition-colors flex items-center"><span class="w-1.5 h-1.5 rounded-full bg-primary mr-2 opacity-0 hover:opacity-100 transition-opacity"></span>Services</a></li>
+          <li><a href="#" class="hover:text-accent transition-colors flex items-center"><span class="w-1.5 h-1.5 rounded-full bg-primary mr-2 opacity-0 hover:opacity-100 transition-opacity"></span>Our Projects</a></li>
+          <li><a href="#" class="hover:text-accent transition-colors flex items-center"><span class="w-1.5 h-1.5 rounded-full bg-primary mr-2 opacity-0 hover:opacity-100 transition-opacity"></span>Testimonials</a></li>
+          <li><a href="#" class="hover:text-accent transition-colors flex items-center"><span class="w-1.5 h-1.5 rounded-full bg-primary mr-2 opacity-0 hover:opacity-100 transition-opacity"></span>Contact</a></li>
         </ul>
       </div>
 
       <!-- Services -->
       <div>
-        <h4 class="text-lg font-semibold mb-6">Services</h4>
-        <ul class="space-y-3 text-gray-400 text-sm">
+        <h4 class="text-lg font-bold mb-6 text-white">Services</h4>
+        <ul class="space-y-3 text-gray-400 text-sm font-medium">
           <li><a href="#" class="hover:text-primary-light transition-colors">Lawn Mowing</a></li>
           <li><a href="#" class="hover:text-primary-light transition-colors">Landscape Design</a></li>
           <li><a href="#" class="hover:text-primary-light transition-colors">Tree Care</a></li>
@@ -46,11 +46,11 @@ import { Facebook, Instagram, Twitter, Linkedin, Send } from 'lucide-react';
 
       <!-- Newsletter -->
       <div>
-        <h4 class="text-lg font-semibold mb-6">Stay Updated</h4>
-        <p class="text-gray-400 text-sm mb-4">Subscribe to get seasonal tips and exclusive offers.</p>
+        <h4 class="text-lg font-bold mb-6 text-white">Stay Updated</h4>
+        <p class="text-gray-400 text-sm mb-4 leading-relaxed">Subscribe to get seasonal tips and exclusive offers straight to your inbox.</p>
         <form class="flex gap-2">
-            <input type="email" placeholder="Your email" class="flex-1 bg-gray-800 border border-gray-700 rounded-lg px-4 py-2 text-sm text-white focus:outline-none focus:border-primary-light" />
-            <button class="bg-primary hover:bg-primary-dark text-white p-2 rounded-lg transition-colors" aria-label="Subscribe">
+            <input type="email" placeholder="Your email" class="flex-1 bg-secondary-light/30 border border-gray-700/50 rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors placeholder-gray-500" />
+            <button class="bg-primary hover:bg-primary-dark text-white p-3 rounded-lg transition-colors shadow-lg shadow-primary/20" aria-label="Subscribe">
                 <Send size={18} />
             </button>
         </form>
@@ -61,7 +61,7 @@ import { Facebook, Instagram, Twitter, Linkedin, Send } from 'lucide-react';
     <!-- Bottom Bar -->
     <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
       <p>&copy; {new Date().getFullYear()} Lawnx Landscaping. All rights reserved.</p>
-      <div class="flex space-x-6 mt-4 md:mt-0">
+      <div class="flex space-x-8 mt-4 md:mt-0 font-medium">
         <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
         <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
       </div>

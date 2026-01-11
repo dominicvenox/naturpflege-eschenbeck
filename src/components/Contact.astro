@@ -56,22 +56,23 @@ import { MapPin, Phone, Mail, Clock } from 'lucide-react';
       </div>
 
       <!-- Form -->
-      <div class="bg-surface-light p-8 rounded-2xl shadow-lg border border-gray-100">
-        <form class="space-y-6">
+      <div class="bg-surface-white p-8 md:p-10 rounded-3xl shadow-2xl shadow-primary/5 border border-gray-100 animate-fade-up delay-200 relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-32 h-32 bg-accent/10 rounded-full blur-3xl -mr-16 -mt-16 pointer-events-none"></div>
+        <form class="space-y-6 relative z-10">
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div>
-              <label for="first-name" class="block text-sm font-medium text-secondary-dark">First Name</label>
-              <input type="text" name="first-name" id="first-name" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary h-12 px-4 bg-white" placeholder="John" />
+            <div class="space-y-2">
+              <label for="first-name" class="block text-sm font-bold text-secondary text-opacity-80">First Name</label>
+              <input type="text" name="first-name" id="first-name" class="block w-full rounded-xl border-gray-200 shadow-sm focus:border-primary focus:ring-primary focus:ring-2 focus:ring-opacity-20 h-14 px-4 bg-surface-muted/50 transition-all duration-300 hover:bg-white text-secondary placeholder-gray-400" placeholder="John" />
             </div>
-            <div>
-              <label for="last-name" class="block text-sm font-medium text-secondary-dark">Last Name</label>
-              <input type="text" name="last-name" id="last-name" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary h-12 px-4 bg-white" placeholder="Doe" />
+            <div class="space-y-2">
+              <label for="last-name" class="block text-sm font-bold text-secondary text-opacity-80">Last Name</label>
+              <input type="text" name="last-name" id="last-name" class="block w-full rounded-xl border-gray-200 shadow-sm focus:border-primary focus:ring-primary focus:ring-2 focus:ring-opacity-20 h-14 px-4 bg-surface-muted/50 transition-all duration-300 hover:bg-white text-secondary placeholder-gray-400" placeholder="Doe" />
             </div>
           </div>
 
-          <div>
-            <label for="service" class="block text-sm font-medium text-secondary-dark">Service Needed</label>
-             <select id="service" name="service" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary h-12 px-4 bg-white text-secondary-light">
+          <div class="space-y-2">
+            <label for="service" class="block text-sm font-bold text-secondary text-opacity-80">Service Needed</label>
+             <select id="service" name="service" class="block w-full rounded-xl border-gray-200 shadow-sm focus:border-primary focus:ring-primary focus:ring-2 focus:ring-opacity-20 h-14 px-4 bg-surface-muted/50 transition-all duration-300 hover:bg-white text-secondary text-opacity-80">
                 <option>Lawn Mowing</option>
                 <option>Landscaping</option>
                 <option>Tree Services</option>
@@ -79,12 +80,12 @@ import { MapPin, Phone, Mail, Clock } from 'lucide-react';
               </select>
           </div>
 
-          <div>
-            <label for="message" class="block text-sm font-medium text-secondary-dark">Project Details</label>
-            <textarea id="message" name="message" rows="4" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary p-4 bg-white" placeholder="Tell us about your yard..."></textarea>
+          <div class="space-y-2">
+            <label for="message" class="block text-sm font-bold text-secondary text-opacity-80">Project Details</label>
+            <textarea id="message" name="message" rows="4" class="block w-full rounded-xl border-gray-200 shadow-sm focus:border-primary focus:ring-primary focus:ring-2 focus:ring-opacity-20 p-4 bg-surface-muted/50 transition-all duration-300 hover:bg-white text-secondary placeholder-gray-400 resize-none" placeholder="Tell us about your yard..."></textarea>
           </div>
 
-          <button type="submit" class="w-full flex justify-center py-4 px-4 border border-transparent rounded-lg shadow-sm text-sm font-bold text-white bg-primary hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-colors">
+          <button type="submit" class="w-full flex justify-center items-center py-4 px-4 border border-transparent rounded-xl shadow-lg shadow-primary/20 hover:shadow-primary/40 text-sm font-bold text-white bg-primary hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-all duration-300 transform hover:-translate-y-0.5">
             Request Quote
           </button>
         </form>
