@@ -3,6 +3,7 @@
 import Container from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import Link from "next/link";
+import Image from "next/image";
 import { Quote } from "lucide-react";
 import AnimatedSection, { StaggerContainer, StaggerItem } from "@/components/ui/AnimatedSection";
 import { motion } from "framer-motion";
@@ -81,8 +82,14 @@ export default function AboutPage() {
 
           {/* Image Placeholder */}
           <AnimatedSection direction="right" delay={0.2}>
-            <div className="relative aspect-[3/4] w-full overflow-hidden rounded-2xl bg-muted/50 flex items-center justify-center">
-              <span className="text-muted-foreground font-medium">[Bild: Markus Eschenbeck bei der Arbeit oder Portrait]</span>
+            <div className="relative aspect-[3/4] w-full overflow-hidden rounded-2xl bg-muted/50">
+              <Image
+                src="/markus-eschenbeck-ueber-mich.webp"
+                alt="Markus Eschenbeck"
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
             </div>
           </AnimatedSection>
         </div>

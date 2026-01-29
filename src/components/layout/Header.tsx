@@ -43,15 +43,16 @@ export default function Header() {
           <div className="flex lg:flex-1">
             <Link href="/" className="-m-1.5 p-1.5 flex items-center gap-2">
               <motion.div
-                className="relative h-10 lg:h-12 w-auto aspect-[3/1]"
+                className="relative h-10 lg:h-12 w-auto"
                 whileHover={{ scale: 1.02 }}
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
               >
                 <Image
                   src="/Logo-quer.png"
                   alt="Naturpflege Eschenbeck"
-                  fill
-                  className="object-contain object-left"
+                  width={414}
+                  height={512}
+                  className="h-full w-auto object-contain object-left"
                   priority
                 />
               </motion.div>

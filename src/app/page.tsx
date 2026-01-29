@@ -91,10 +91,13 @@ export default function Home() {
         <Container>
           <div className="grid gap-8 lg:grid-cols-2 lg:gap-16 items-center">
             <AnimatedSection direction="left" className="relative aspect-square overflow-hidden rounded-2xl bg-muted/50">
-              {/* Placeholder for Profile Picture */}
-              <div className="absolute inset-0 flex items-center justify-center text-muted-foreground">
-                <span className="text-lg font-medium">[Bild: Markus Eschenbeck auf dem Hof]</span>
-              </div>
+              <Image
+                src="/markus-eschenbeck-naturpflege.webp"
+                alt="Markus Eschenbeck auf dem Hof"
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
             </AnimatedSection>
             <AnimatedSection direction="right" delay={0.2}>
               <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl mb-6">
