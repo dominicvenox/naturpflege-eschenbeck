@@ -54,7 +54,7 @@ export default function Footer() {
                 <ul role="list" className="mt-6 space-y-4">
                   <li>
                     <Link href="/ueber-mich" className="text-sm leading-6 text-muted-foreground hover:text-primary transition-colors">
-                      Über uns
+                      Über mich
                     </Link>
                   </li>
                   <li>

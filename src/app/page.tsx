@@ -53,7 +53,7 @@ export default function Home() {
               <Link href="/kontakt">Kostenloses Angebot anfragen</Link>
             </Button>
             <Button variant="outline" size="lg" className="text-lg px-8 h-14" asChild>
-              <Link href="/leistungen">Unsere Leistungen</Link>
+              <Link href="/leistungen">Meine Leistungen</Link>
             </Button>
           </motion.div>
 
@@ -105,8 +105,9 @@ export default function Home() {
               </h2>
               <div className="space-y-4 text-lg text-muted-foreground">
                 <p>
-                  Ich bin Markus Eschenbeck. Aufgewachsen auf einem historischen Bauernhof im schönen Altmühltal,
+                  Ich bin Markus Eschenbeck. Aufgewachsen im schönen Rezattal,
                   wurde mir die Liebe zur Natur und Landwirtschaft in die Wiege gelegt.
+                  Geprägt wurde ich durch die Schäferei meiner Großeltern, die mir früh die Leidenschaft für die Landschaftspflege vermittelte.
                 </p>
                 <p>
                   Mit meiner Erfahrung und speziellen Fortbildungen, wie dem Kurs &apos;Landschaft anpacken&apos;
@@ -134,9 +135,9 @@ export default function Home() {
       <section className="py-12 lg:py-24 bg-muted/30">
         <Container>
           <AnimatedSection className="mx-auto max-w-2xl text-center mb-16">
-            <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">Unsere Leistungen</h2>
+            <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">Meine Leistungen</h2>
             <p className="mt-4 text-lg text-muted-foreground">
-              Von der Streuobstwiese bis zur Heckenpflege – wir bieten ein breites Spektrum an Dienstleistungen für gesunde Landschaften.
+              Von der Streuobstwiese bis zur Heckenpflege – ich biete ein breites Spektrum an Dienstleistungen für gesunde Landschaften.
             </p>
           </AnimatedSection>
 
@@ -185,7 +186,7 @@ export default function Home() {
           </AnimatedSection>
           <AnimatedSection delay={0.1}>
             <p className="mx-auto max-w-2xl text-lg text-primary-foreground/90 mb-10">
-              Kontaktieren Sie uns für ein unverbindliches Beratungsgespräch. Wir finden die passende Lösung für Ihr Grundstück.
+              Kontaktieren Sie mich für ein unverbindliches Beratungsgespräch. Ich finde die passende Lösung für Ihr Grundstück.
             </p>
           </AnimatedSection>
           <AnimatedSection delay={0.2}>

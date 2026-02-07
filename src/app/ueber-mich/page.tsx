@@ -28,7 +28,7 @@ export default function AboutPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
           >
-            Lernen Sie die Menschen und Werte hinter Naturpflege Eschenbeck kennen.
+            Lernen Sie mich und meine Werte kennen.
           </motion.p>
         </Container>
       </div>
@@ -114,8 +114,8 @@ export default function AboutPage() {
             </AnimatedSection>
             <AnimatedSection delay={0.1}>
               <blockquote className="text-2xl font-serif italic text-foreground/80 mb-10 leading-relaxed">
-                &quot;Wir pflegen, was gewachsen ist - mit Hand und Verstand.&quot;
-              </blockquote>
+              &quot;Wir pflegen, was gewachsen ist - mit Hand und Verstand.&quot;
+            </blockquote>
             </AnimatedSection>
             <StaggerContainer className="grid gap-6 sm:grid-cols-2 text-left mt-12 lg:mt-16" staggerDelay={0.15}>
               <StaggerItem>
@@ -126,7 +126,7 @@ export default function AboutPage() {
                 >
                   <h3 className="text-xl font-semibold mb-3 text-primary">Natur & Kulturlandschaft</h3>
                   <p className="text-muted-foreground">
-                    Uns liegt die Natur und unsere Fränkische Kulturlandschaft sehr am Herzen. Wir engagieren uns aktiv für ihren Erhalt und die Förderung der Artenvielfalt.
+                    Mir liegt die Natur und unsere Fränkische Kulturlandschaft sehr am Herzen. Ich engagiere mich aktiv für ihren Erhalt und die Förderung der Artenvielfalt.
                   </p>
                 </motion.div>
               </StaggerItem>
@@ -138,7 +138,7 @@ export default function AboutPage() {
                 >
                   <h3 className="text-xl font-semibold mb-3 text-primary">Spezialisierung auf Handarbeit</h3>
                   <p className="text-muted-foreground">
-                    Wir fangen da an, wo große Maschinen nicht weiterkommen oder aus Naturschutzgründen nicht erwünscht sind. Wir arbeiten schonend mit Kleingeräten, Handsense und Rechen.
+                    Ich fange da an, wo große Maschinen nicht weiterkommen oder aus Naturschutzgründen nicht erwünscht sind. Ich arbeite schonend mit Kleingeräten, Handsense und Rechen.
                   </p>
                 </motion.div>
               </StaggerItem>
@@ -149,7 +149,7 @@ export default function AboutPage() {
 
       <Container>
         <AnimatedSection className="mt-16 text-center">
-          <h3 className="text-2xl font-bold text-foreground mb-6">Sie haben ein Projekt für uns?</h3>
+          <h3 className="text-2xl font-bold text-foreground mb-6">Sie haben ein Projekt für mich?</h3>
           <Button size="lg" asChild>
             <Link href="/kontakt">Jetzt Kontakt aufnehmen</Link>
           </Button>

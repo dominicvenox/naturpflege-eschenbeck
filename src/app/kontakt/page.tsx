@@ -7,6 +7,7 @@ import { Mail, Phone, MapPin, ArrowRight, ArrowLeft, Check, TreeDeciduous, Sciss
 import AnimatedSection from "@/components/ui/AnimatedSection";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
+import { Turnstile } from "@marsidev/react-turnstile";
 
 // Dynamically import Map with no SSR
 const MapRaw = dynamic(() => import("@/components/Map"), {
@@ -24,6 +25,8 @@ export default function KontaktPage() {
   const [step, setStep] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
+  const [honeypot, setHoneypot] = useState("");
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -49,46 +52,40 @@ export default function KontaktPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    if (!turnstileToken) {
+      return;
+    }
+    
     setIsSubmitting(true);
     setSubmitStatus('idle');
 
     try {
-      // Get service name for better readability
-      const serviceName = services.find(s => s.id === formData.service)?.name || formData.service;
-      
-      // Prepare data for n8n webhook
-      const webhookData = {
-        firstName: formData.firstName,
-        lastName: formData.lastName,
-        email: formData.email,
-        phone: formData.phone || "Nicht angegeben",
-        service: serviceName,
-        message: formData.message,
-        timestamp: new Date().toISOString(),
-        source: "naturpflege-eschenbeck.de"
-      };
-
-      // Send to n8n webhook
-      const webhookUrl = process.env.NEXT_PUBLIC_N8N_WEBHOOK_URL;
-      
-      if (!webhookUrl) {
-        throw new Error("Webhook URL nicht konfiguriert");
-      }
-
-      const response = await fetch(webhookUrl, {
+      const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(webhookData),
+        body: JSON.stringify({
+          firstName: formData.firstName,
+          lastName: formData.lastName,
+          email: formData.email,
+          phone: formData.phone,
+          service: formData.service,
+          message: formData.message,
+          turnstileToken,
+          honeypot,
+        }),
       });
 
       if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+        const data = await response.json();
+        throw new Error(data.error || 'Submission failed');
       }
 
       // Success!
       setSubmitStatus('success');
+      setTurnstileToken(null);
       
       // Reset form after short delay
       setTimeout(() => {
@@ -115,7 +112,7 @@ export default function KontaktPage() {
 
   const isStep1Valid = formData.firstName && formData.lastName && formData.email;
   const isStep2Valid = formData.service && formData.message;
-  const isStep3Valid = formData.privacyAccepted;
+  const isStep3Valid = formData.privacyAccepted && turnstileToken;
 
   return (
     <div className="flex flex-col pb-24 overflow-x-hidden">
@@ -136,7 +133,7 @@ export default function KontaktPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
           >
-            Wir freuen uns auf Ihre Anfrage. Lassen Sie uns über Ihr Projekt sprechen.
+            Ich freue mich auf Ihre Anfrage. Lassen Sie uns über Ihr Projekt sprechen.
           </motion.p>
         </Container>
       </div>
@@ -391,6 +388,32 @@ export default function KontaktPage() {
                           gelesen und stimme der Verarbeitung meiner Daten zu. *
                         </label>
                       </div>
+
+                      {/* Cloudflare Turnstile */}
+                      <div className="flex justify-center">
+                        <Turnstile
+                          siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || ''}
+                          onSuccess={(token) => setTurnstileToken(token)}
+                          onExpire={() => setTurnstileToken(null)}
+                          onError={() => setTurnstileToken(null)}
+                          options={{
+                            theme: 'light',
+                            language: 'de',
+                          }}
+                        />
+                      </div>
+
+                      {/* Honeypot field (hidden from humans) */}
+                      <input
+                        type="text"
+                        name="website"
+                        value={honeypot}
+                        onChange={(e) => setHoneypot(e.target.value)}
+                        style={{ position: 'absolute', left: '-9999px' }}
+                        tabIndex={-1}
+                        autoComplete="off"
+                        aria-hidden="true"
+                      />
                     </motion.div>
                   )}
                 </AnimatePresence>
@@ -412,7 +435,7 @@ export default function KontaktPage() {
                   <Button
                     type="submit"
                     className="flex-1"
-                    disabled={(step === 1 && !isStep1Valid) || (step === 2 && !isStep2Valid) || (step === 3 && !isStep3Valid) || isSubmitting}
+                    disabled={(step === 1 && !isStep1Valid) || (step === 2 && !isStep2Valid) || (step === 3 && !isStep3Valid) || isSubmitting || (step === 3 && !turnstileToken)}
                   >
                     {isSubmitting ? (
                       <>
@@ -444,7 +467,7 @@ export default function KontaktPage() {
                       <Check className="w-5 h-5 text-green-600 shrink-0 mt-0.5" />
                       <div>
                         <p className="font-medium text-green-900">Erfolgreich gesendet!</p>
-                        <p className="text-sm text-green-700 mt-1">Vielen Dank für Ihre Anfrage. Wir melden uns in Kürze bei Ihnen.</p>
+                        <p className="text-sm text-green-700 mt-1">Vielen Dank für Ihre Anfrage. Ich melde mich in Kürze bei Ihnen.</p>
                       </div>
                     </motion.div>
                   )}
@@ -496,7 +519,7 @@ export default function KontaktPage() {
                       icon: Phone,
                       title: "Telefon",
                       content: (
-                        <span className="text-muted-foreground text-sm italic">Telefonnummer folgt</span>
+                        <span className="text-muted-foreground text-sm italic">+49 176 64625119</span>
                       )
                     }
                   ].map((item, index) => (

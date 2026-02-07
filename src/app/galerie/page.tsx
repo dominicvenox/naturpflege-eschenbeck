@@ -88,7 +88,7 @@ export default function GaleriePage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            Unsere Arbeit
+            Meine Arbeit
           </motion.h1>
           <motion.p
             className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground"

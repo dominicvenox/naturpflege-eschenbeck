@@ -10,9 +10,9 @@ import { Button } from "@/components/ui/Button";
 
 const navigation = [
   { name: "Start", href: "/" },
-  { name: "Über uns", href: "/ueber-mich" },
+  { name: "Über mich", href: "/ueber-mich" },
   { name: "Leistungen", href: "/leistungen" },
-  { name: "Galerie", href: "/galerie" },
+  // { name: "Galerie", href: "/galerie" }, // Temporär versteckt bis genug Bilder vorhanden sind
   { name: "Kontakt", href: "/kontakt" },
 ];
 

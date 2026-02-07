@@ -3,6 +3,7 @@
 import Container from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import Link from "next/link";
+import Image from "next/image";
 import { Check } from "lucide-react";
 import AnimatedSection, { StaggerContainer, StaggerItem } from "@/components/ui/AnimatedSection";
 import { motion } from "framer-motion";
@@ -19,7 +20,7 @@ export default function ServicesPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            Unsere Leistungen
+            Meine Leistungen
           </motion.h1>
           <motion.p
             className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground"
@@ -44,7 +45,7 @@ export default function ServicesPage() {
             <AnimatedSection direction="left">
               <div className="rounded-2xl border bg-card p-8 shadow-sm h-full">
                 <p className="text-lg text-muted-foreground mb-6">
-                  Streuobstwiesen sind wertvolle Kulturlandschaften. Wir kümmern uns um den kompletten Lebenszyklus Ihrer Obstbäume – von der Pflanzung bis zur Ernte.
+                  Streuobstwiesen sind wertvolle Kulturlandschaften. Ich kümmere mich um den kompletten Lebenszyklus Ihrer Obstbäume – von der Pflanzung bis zur Ernte.
                 </p>
                 <ul className="space-y-3">
                   {[
@@ -70,9 +71,15 @@ export default function ServicesPage() {
                 </ul>
               </div>
             </AnimatedSection>
-            <AnimatedSection direction="right" delay={0.2}>
-              <div className="relative aspect-video rounded-2xl bg-muted/50 overflow-hidden flex items-center justify-center h-full">
-                <span className="text-muted-foreground font-medium">[Bild: Streuobstwiese oder Baumschnitt]</span>
+            <AnimatedSection direction="right" delay={0.2} className="h-full">
+              <div className="relative aspect-video rounded-2xl bg-muted/50 overflow-hidden h-full">
+                <Image
+                  src="/Apfelblüte-markus-eschenbeck-naturpflege.png"
+                  alt="Apfelblüte - Streuobstpflege von Naturpflege Eschenbeck"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
               </div>
             </AnimatedSection>
           </div>
@@ -87,14 +94,20 @@ export default function ServicesPage() {
           </AnimatedSection>
           <div className="grid gap-6 lg:grid-cols-2 lg:gap-8">
             <AnimatedSection direction="left" className="order-2 lg:order-1">
-              <div className="relative aspect-video rounded-2xl bg-muted/50 overflow-hidden flex items-center justify-center h-full">
-                <span className="text-muted-foreground font-medium">[Bild: Landschaftspflege Arbeit]</span>
+              <div className="relative aspect-video rounded-2xl bg-muted/50 overflow-hidden h-full">
+                <Image
+                  src="/Entbuschung-Markus-Eschenbeck-Naturpflege.png"
+                  alt="Markus Eschenbeck bei der Landschaftspflege - Entbuschung im Altmühltal"
+                  fill
+                  className="object-cover object-right-bottom"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
               </div>
             </AnimatedSection>
             <AnimatedSection direction="right" delay={0.2} className="order-1 lg:order-2">
               <div className="rounded-2xl border bg-card p-8 shadow-sm h-full">
                 <p className="text-lg text-muted-foreground mb-6">
-                  Wir pflegen Landschaftspflegegebiete und extensiv genutzte Flächen, um die Biodiversität zu erhalten.
+                  Ich pflege Landschaftspflegegebiete und extensiv genutzte Flächen, um die Biodiversität zu erhalten.
                 </p>
                 <ul className="space-y-3">
                   {[
@@ -162,7 +175,7 @@ export default function ServicesPage() {
               >
                 <h3 className="text-xl font-semibold mb-4">Schwieriges Gelände</h3>
                 <p className="text-muted-foreground mb-4">
-                  Wir sind spezialisiert auf Naturpflege auch in steilem oder schwer zugänglichem Gelände, wo Handarbeit gefragt ist.
+                  Ich bin spezialisiert auf Naturpflege auch in steilem oder schwer zugänglichem Gelände, wo Handarbeit gefragt ist.
                 </p>
               </motion.div>
             </StaggerItem>
@@ -170,7 +183,7 @@ export default function ServicesPage() {
           <AnimatedSection delay={0.4}>
             <div className="mt-8 rounded-xl bg-muted/30 p-6 text-center">
               <p className="font-medium text-foreground">
-                Selbstverständlich kümmern wir uns auch um die fachgerechte Entsorgung des Schnittguts.
+                Selbstverständlich kümmere ich mich auch um die fachgerechte Entsorgung des Schnittguts.
               </p>
             </div>
           </AnimatedSection>
