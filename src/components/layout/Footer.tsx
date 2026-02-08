@@ -82,6 +82,24 @@ export default function Footer() {
                       Datenschutz
                     </Link>
                   </li>
+                  <li>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        import("vanilla-cookieconsent").then((cc) => {
+                          cc.showPreferences();
+                        });
+                      }}
+                      className="text-sm leading-6 text-muted-foreground hover:text-primary transition-colors text-left"
+                    >
+                      Cookie-Einstellungen
+                    </button>
+                  </li>
+                  <li>
+                    <Link href="/datenschutz#cookies" className="text-sm leading-6 text-muted-foreground hover:text-primary transition-colors">
+                      Cookie-Richtlinie
+                    </Link>
+                  </li>
                 </ul>
               </motion.div>
             </div>

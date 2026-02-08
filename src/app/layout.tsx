@@ -4,6 +4,8 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import "./globals.css";
 import "leaflet/dist/leaflet.css";
+import "vanilla-cookieconsent/dist/cookieconsent.css";
+import CookieConsentComponent from "@/components/ui/CookieConsent";
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
@@ -30,6 +32,7 @@ export default function RootLayout({
             {children}
         </main>
         <Footer />
+        <CookieConsentComponent />
       </body>
     </html>
   );

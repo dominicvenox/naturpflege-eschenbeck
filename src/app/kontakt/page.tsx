@@ -110,8 +110,8 @@ export default function KontaktPage() {
     }
   };
 
-  const isStep1Valid = formData.firstName && formData.lastName && formData.email;
-  const isStep2Valid = formData.service && formData.message;
+  const isStep1Valid = formData.service && formData.message;
+  const isStep2Valid = formData.firstName && formData.lastName && formData.email;
   const isStep3Valid = formData.privacyAccepted && turnstileToken;
 
   return (
@@ -146,53 +146,180 @@ export default function KontaktPage() {
               <h2 className="text-2xl font-bold mb-6">Schreiben Sie uns</h2>
               
               {/* Progress Bar */}
-              <div className="mb-8">
-                <div className="flex items-center mb-4">
-                  {[1, 2, 3].map((s, index) => (
-                    <div key={s} className="flex items-center" style={{ flex: index < 2 ? 1 : 'none' }}>
-                      <div className="flex flex-col items-center">
-                        <motion.div
-                          className={`w-12 h-12 rounded-full flex items-center justify-center font-semibold transition-all ${
-                            step > s
-                              ? "bg-primary text-primary-foreground shadow-md"
-                              : step === s
-                              ? "bg-primary text-primary-foreground shadow-lg shadow-primary/30"
-                              : "bg-muted text-muted-foreground"
-                          }`}
-                          initial={{ scale: 0.8 }}
-                          animate={{ scale: 1 }}
-                          transition={{ duration: 0.3 }}
-                        >
-                          {step > s ? <Check className="w-5 h-5" /> : s}
-                        </motion.div>
-                        <span className={`text-xs mt-2 font-medium transition-colors ${
-                          step === s ? "text-primary" : "text-muted-foreground"
-                        }`}>
-                          {s === 1 ? "Persönlich" : s === 2 ? "Details" : "Absenden"}
-                        </span>
-                      </div>
-                      {s < 3 && (
-                        <div className="flex-1 h-0.5 mx-3 bg-muted relative overflow-hidden">
-                          <motion.div
-                            className="h-full bg-primary absolute top-0 left-0"
-                            initial={{ width: "0%" }}
-                            animate={{ width: step > s ? "100%" : "0%" }}
-                            transition={{ duration: 0.5 }}
-                          />
-                        </div>
-                      )}
+              <div className="mb-8 max-w-sm mx-auto sm:max-w-none">
+                <div className="flex items-start justify-between">
+                  {/* Step 1 */}
+                  <div className="flex flex-col items-center">
+                    <motion.div
+                      className={`w-12 h-12 rounded-full flex items-center justify-center font-semibold transition-all border-4 border-card ${
+                        step > 1
+                          ? "bg-primary text-primary-foreground shadow-md"
+                          : step === 1
+                          ? "bg-primary text-primary-foreground shadow-lg shadow-primary/30"
+                          : "bg-muted text-muted-foreground"
+                      }`}
+                      initial={{ scale: 0.8 }}
+                      animate={{ scale: 1 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      {step > 1 ? <Check className="w-5 h-5" /> : 1}
+                    </motion.div>
+                    <span className={`text-xs mt-2 font-medium transition-colors ${
+                      step === 1 ? "text-primary" : "text-muted-foreground"
+                    }`}>
+                      Details
+                    </span>
+                  </div>
+
+                  {/* Line 1-2 */}
+                  <div className="flex-1 flex items-center h-12 px-2">
+                    <div className="relative w-full h-2 rounded-full" style={{ backgroundColor: '#e5e7eb' }}>
+                      <motion.div
+                        className="absolute top-0 left-0 h-full rounded-full"
+                        style={{ backgroundColor: '#2F5233' }}
+                        initial={{ width: "0%" }}
+                        animate={{ width: step > 1 ? "100%" : "0%" }}
+                        transition={{ duration: 0.4, ease: "easeInOut" }}
+                      />
                     </div>
-                  ))}
+                  </div>
+
+                  {/* Step 2 */}
+                  <div className="flex flex-col items-center">
+                    <motion.div
+                      className={`w-12 h-12 rounded-full flex items-center justify-center font-semibold transition-all border-4 border-card ${
+                        step > 2
+                          ? "bg-primary text-primary-foreground shadow-md"
+                          : step === 2
+                          ? "bg-primary text-primary-foreground shadow-lg shadow-primary/30"
+                          : "bg-muted text-muted-foreground"
+                      }`}
+                      initial={{ scale: 0.8 }}
+                      animate={{ scale: 1 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      {step > 2 ? <Check className="w-5 h-5" /> : 2}
+                    </motion.div>
+                    <span className={`text-xs mt-2 font-medium transition-colors ${
+                      step === 2 ? "text-primary" : "text-muted-foreground"
+                    }`}>
+                      Persönlich
+                    </span>
+                  </div>
+
+                  {/* Line 2-3 */}
+                  <div className="flex-1 flex items-center h-12 px-2">
+                    <div className="relative w-full h-2 rounded-full" style={{ backgroundColor: '#e5e7eb' }}>
+                      <motion.div
+                        className="absolute top-0 left-0 h-full rounded-full"
+                        style={{ backgroundColor: '#2F5233' }}
+                        initial={{ width: "0%" }}
+                        animate={{ width: step > 2 ? "100%" : "0%" }}
+                        transition={{ duration: 0.4, ease: "easeInOut" }}
+                      />
+                    </div>
+                  </div>
+
+                  {/* Step 3 */}
+                  <div className="flex flex-col items-center">
+                    <motion.div
+                      className={`w-12 h-12 rounded-full flex items-center justify-center font-semibold transition-all border-4 border-card ${
+                        step > 3
+                          ? "bg-primary text-primary-foreground shadow-md"
+                          : step === 3
+                          ? "bg-primary text-primary-foreground shadow-lg shadow-primary/30"
+                          : "bg-muted text-muted-foreground"
+                      }`}
+                      initial={{ scale: 0.8 }}
+                      animate={{ scale: 1 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      {step > 3 ? <Check className="w-5 h-5" /> : 3}
+                    </motion.div>
+                    <span className={`text-xs mt-2 font-medium transition-colors ${
+                      step === 3 ? "text-primary" : "text-muted-foreground"
+                    }`}>
+                      Absenden
+                    </span>
+                  </div>
                 </div>
               </div>
 
               {/* Form Steps */}
               <form onSubmit={step === 3 ? handleSubmit : handleNext} className="space-y-6">
                 <AnimatePresence mode="wait">
-                  {/* Step 1: Personal Information */}
+                  {/* Step 1: Service & Message (Details) */}
                   {step === 1 && (
                     <motion.div
                       key="step1"
+                      initial={{ opacity: 0, x: 20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      exit={{ opacity: 0, x: -20 }}
+                      transition={{ duration: 0.3 }}
+                      className="space-y-4"
+                    >
+                      <div className="space-y-2">
+                        <label className="text-sm font-medium">
+                          Welche Leistung interessiert Sie? *
+                        </label>
+                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                          {services.map((service) => {
+                            const Icon = service.icon;
+                            return (
+                              <motion.button
+                                key={service.id}
+                                type="button"
+                                onClick={() => updateField("service", service.id)}
+                                className={`relative p-4 rounded-lg border-2 transition-all ${
+                                  formData.service === service.id
+                                    ? "border-primary bg-primary/5 shadow-lg shadow-primary/20"
+                                    : "border-input hover:border-primary/50 hover:bg-accent"
+                                }`}
+                                whileHover={{ scale: 1.02 }}
+                                whileTap={{ scale: 0.98 }}
+                              >
+                                <Icon className={`w-6 h-6 mx-auto mb-2 ${
+                                  formData.service === service.id ? "text-primary" : "text-muted-foreground"
+                                }`} />
+                                <span className={`text-sm font-medium block ${
+                                  formData.service === service.id ? "text-primary" : "text-foreground"
+                                }`}>
+                                  {service.name}
+                                </span>
+                                {formData.service === service.id && (
+                                  <motion.div
+                                    className="absolute top-2 right-2 w-5 h-5 bg-primary rounded-full flex items-center justify-center"
+                                    initial={{ scale: 0 }}
+                                    animate={{ scale: 1 }}
+                                  >
+                                    <Check className="w-3 h-3 text-primary-foreground" />
+                                  </motion.div>
+                                )}
+                              </motion.button>
+                            );
+                          })}
+                        </div>
+                      </div>
+                      <div className="space-y-2">
+                        <label htmlFor="message" className="text-sm font-medium">
+                          Ihre Nachricht *
+                        </label>
+                        <textarea
+                          id="message"
+                          value={formData.message}
+                          onChange={(e) => updateField("message", e.target.value)}
+                          className="flex min-h-[140px] w-full rounded-lg border border-input bg-background px-4 py-3 text-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 transition-all resize-none"
+                          placeholder="Beschreiben Sie uns Ihr Projekt..."
+                          required
+                        />
+                      </div>
+                    </motion.div>
+                  )}
+
+                  {/* Step 2: Personal Information */}
+                  {step === 2 && (
+                    <motion.div
+                      key="step2"
                       initial={{ opacity: 0, x: 20 }}
                       animate={{ opacity: 1, x: 0 }}
                       exit={{ opacity: 0, x: -20 }}
@@ -254,74 +381,6 @@ export default function KontaktPage() {
                           onChange={(e) => updateField("phone", e.target.value)}
                           className="flex h-11 w-full rounded-lg border border-input bg-background px-4 py-2 text-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 transition-all"
                           placeholder="+49 123 45678"
-                        />
-                      </div>
-                    </motion.div>
-                  )}
-
-                  {/* Step 2: Service & Message */}
-                  {step === 2 && (
-                    <motion.div
-                      key="step2"
-                      initial={{ opacity: 0, x: 20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      exit={{ opacity: 0, x: -20 }}
-                      transition={{ duration: 0.3 }}
-                      className="space-y-4"
-                    >
-                      <div className="space-y-2">
-                        <label className="text-sm font-medium">
-                          Welche Leistung interessiert Sie? *
-                        </label>
-                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                          {services.map((service) => {
-                            const Icon = service.icon;
-                            return (
-                              <motion.button
-                                key={service.id}
-                                type="button"
-                                onClick={() => updateField("service", service.id)}
-                                className={`relative p-4 rounded-lg border-2 transition-all ${
-                                  formData.service === service.id
-                                    ? "border-primary bg-primary/5 shadow-lg shadow-primary/20"
-                                    : "border-input hover:border-primary/50 hover:bg-accent"
-                                }`}
-                                whileHover={{ scale: 1.02 }}
-                                whileTap={{ scale: 0.98 }}
-                              >
-                                <Icon className={`w-6 h-6 mx-auto mb-2 ${
-                                  formData.service === service.id ? "text-primary" : "text-muted-foreground"
-                                }`} />
-                                <span className={`text-sm font-medium block ${
-                                  formData.service === service.id ? "text-primary" : "text-foreground"
-                                }`}>
-                                  {service.name}
-                                </span>
-                                {formData.service === service.id && (
-                                  <motion.div
-                                    className="absolute top-2 right-2 w-5 h-5 bg-primary rounded-full flex items-center justify-center"
-                                    initial={{ scale: 0 }}
-                                    animate={{ scale: 1 }}
-                                  >
-                                    <Check className="w-3 h-3 text-primary-foreground" />
-                                  </motion.div>
-                                )}
-                              </motion.button>
-                            );
-                          })}
-                        </div>
-                      </div>
-                      <div className="space-y-2">
-                        <label htmlFor="message" className="text-sm font-medium">
-                          Ihre Nachricht *
-                        </label>
-                        <textarea
-                          id="message"
-                          value={formData.message}
-                          onChange={(e) => updateField("message", e.target.value)}
-                          className="flex min-h-[140px] w-full rounded-lg border border-input bg-background px-4 py-3 text-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 transition-all resize-none"
-                          placeholder="Beschreiben Sie uns Ihr Projekt..."
-                          required
                         />
                       </div>
                     </motion.div>
@@ -519,7 +578,7 @@ export default function KontaktPage() {
                       icon: Phone,
                       title: "Telefon",
                       content: (
-                        <span className="text-muted-foreground text-sm italic">+49 176 64625119</span>
+                        <a href="tel:+4917664625119" className="text-muted-foreground hover:text-primary transition-colors">+49 176 64625119</a>
                       )
                     }
                   ].map((item, index) => (

@@ -1,9 +1,8 @@
 "use client";
 
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 // Fix for default Leaflet marker icons in Next.js
 const icon = L.icon({
@@ -17,20 +16,41 @@ const icon = L.icon({
 });
 
 export default function Map() {
-  // Herrieden - Leibelbach 4
-  const position: [number, number] = [49.2219, 10.4917];
+  const mapRef = useRef<L.Map | null>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
-  return (
-    <MapContainer center={position} zoom={13} scrollWheelZoom={false} className="h-full w-full rounded-xl z-0">
-      <TileLayer
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-      />
-      <Marker position={position} icon={icon}>
-        <Popup>
-          Naturpflege Eschenbeck <br /> Herrieden, Altmühltal
-        </Popup>
-      </Marker>
-    </MapContainer>
-  );
+  // Herrieden - Leibelbach 4
+  const position: L.LatLngExpression = [49.2219, 10.4917];
+
+  useEffect(() => {
+    if (!containerRef.current || mapRef.current) return;
+
+    // Initialize the map
+    mapRef.current = L.map(containerRef.current, {
+      center: position,
+      zoom: 13,
+      scrollWheelZoom: false,
+    });
+
+    // Add tile layer
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      attribution:
+        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+    }).addTo(mapRef.current);
+
+    // Add marker
+    L.marker(position, { icon })
+      .addTo(mapRef.current)
+      .bindPopup("Naturpflege Eschenbeck <br /> Herrieden, Altmühltal");
+
+    // Cleanup on unmount
+    return () => {
+      if (mapRef.current) {
+        mapRef.current.remove();
+        mapRef.current = null;
+      }
+    };
+  }, []);
+
+  return <div ref={containerRef} className="h-full w-full rounded-xl z-0" />;
 }
