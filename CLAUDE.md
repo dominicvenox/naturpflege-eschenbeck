@@ -1,6 +1,14 @@
-# CLAUDE.md
+# CLAUDE.md - Naturpflege Eschenbeck
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+> **Standard:** This project follows the Venox Agency Tech Stack.
+> **Rules:** See `.agent/rules/VENOX-STACK.md` for strict architectural and library rules.
+
+## Commands
+
+- `npm run dev`      # Start development server (localhost:3000)
+- `npm run build`    # Production build
+- `npm run start`    # Start production server
+- `npm run lint`     # Run ESLint
 
 ## Project Overview
 
@@ -12,62 +20,44 @@ Naturpflege Eschenbeck is a Next.js 16 website for a professional landscaping an
 - **React:** 19.2.3 (React Server Components)
 - **Language:** TypeScript 5
 - **Styling:** Tailwind CSS 4 with CSS variables
+- **UI Components:** shadcn/ui (compatible), CVA for custom components
 - **Animations:** Framer Motion
 - **Icons:** Lucide React
 - **Maps:** Leaflet with react-leaflet (OpenStreetMap)
-- **Component Variants:** class-variance-authority (CVA)
-
-## Commands
-
-```bash
-npm run dev      # Start development server (localhost:3000)
-npm run build    # Production build
-npm run start    # Start production server
-npm run lint     # Run ESLint
-```
+- **Deployment:** Dokploy (Nixpacks, Node.js 22)
 
 ## Architecture
 
 ### App Router Structure (`src/app/`)
 - `layout.tsx` - Root layout with Header/Footer, Montserrat font
 - `page.tsx` - Home page with hero, services overview, CTA
-- `leistungen/page.tsx` - Services page (Streuobst, Landschaftspflege, Spezialleistungen)
+- `leistungen/page.tsx` - Services page
 - `kontakt/page.tsx` - Contact form + Leaflet map (client component)
 - `galerie/page.tsx` - Image gallery
 - `ueber-mich/page.tsx` - About Markus page
 
 ### Components (`src/components/`)
-- `layout/Header.tsx` - Sticky header with mobile hamburger menu (client component)
+- `layout/Header.tsx` - Sticky header with mobile hamburger menu
 - `layout/Footer.tsx` - Multi-column footer
-- `ui/Button.tsx` - CVA button with variants: default, outline, secondary, ghost, link
+- `ui/Button.tsx` - CVA button (variants: default, outline, secondary, ghost, link)
 - `ui/Container.tsx` - Max-width container wrapper
-- `Map.tsx` - Leaflet map (must be dynamically imported with `ssr: false`)
-- `ServiceCard.tsx`, `ImageSlider.tsx`, `Lightbox.tsx` - Feature components
-
-### Utilities (`src/lib/`)
-- `utils.ts` - `cn()` helper for Tailwind class merging (clsx + tailwind-merge)
+- `Map.tsx` - Leaflet map (dynamic import required)
 
 ## Key Implementation Details
 
-**Client Components:** Use `"use client"` directive for interactive components (Header, Map, contact form). The Map component requires dynamic import:
-```typescript
-const Map = dynamic(() => import("@/components/Map"), { ssr: false });
-```
+- **Client Components:** Use `"use client"` for interactive parts (Header, Map, Contact).
+- **Map Integration:**
+  ```typescript
+  const Map = dynamic(() => import("@/components/Map"), { ssr: false });
+  ```
+- **Color Palette:**
+  - Background: `#F9F9F5` (Off-white)
+  - Foreground: `#1C2D27` (Dark green)
+  - Primary: `#2F5233` (Nature green)
+  - Secondary: `#B19470` (Earth/wood tone)
+  - Accent: `#A5B864` (Fresh green)
 
-**Path Aliases:** Import with `@/` prefix (e.g., `@/components/ui/Button`)
-
-**Color Palette (CSS Variables in globals.css):**
-- `--background`: #F9F9F5 (Off-white)
-- `--foreground`: #1C2D27 (Dark green)
-- `--primary`: #2F5233 (Nature green)
-- `--secondary`: #B19470 (Earth/wood tone)
-- `--accent`: #A5B864 (Fresh green)
-
-**Contact Form:** Currently has no submission handler - needs backend implementation.
-
-## Deployment
-
-Configured via `nixpacks.toml` for cloud platforms (Render, Railway):
+## Deployment Config (Nixpacks)
 - Node.js 22
 - Install: `npm ci`
 - Build: `npm run build`
